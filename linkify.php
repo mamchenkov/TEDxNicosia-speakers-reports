@@ -27,7 +27,16 @@ foreach ($data_files as $data_file) {
 	}
 }
 
-var_dump($words);
+uasort($words, 'compare_by_count');
+print_r($words);
+
+function compare_by_count($a, $b) {
+	$count_a = count($a);
+	$count_b = count($b);
+
+	$result = $count_b > $count_a ? 1 : -1;
+	return $result;
+}
 
 /**
  * Figure out a nicer label for a file
