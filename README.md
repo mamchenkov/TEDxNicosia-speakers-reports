@@ -1,5 +1,5 @@
-TEDxNicosia Speakers
-====================
+TEDxNicosia Speakers linkifier
+==============================
 
 This is my quick and simple way to analyse what's common between speakers of
 (TEDxNicosia)[http://www.tedxnicosia.com] conference. It's just a simple and
