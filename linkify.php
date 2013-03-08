@@ -1,13 +1,7 @@
 <?php
 
 $data_dir = __DIR__ . DIRECTORY_SEPARATOR . 'data' . DIRECTORY_SEPARATOR . '2013';
-$exceptions = array(
-	'a', 'the',
-	'and', 'or', 'not',
-	'be', 'been', 'is', 'was', 'will', 'should', 'could', 'ought', 'must',
-	'have', 'had', 'has',
-	'his', 'her', 'my', 'mine', 'our', 'their',
-);
+$exceptions = array_map('trim', file(__DIR__ . DIRECTORY_SEPARATOR . 'non_words.txt'));
 
 $words = array();
 
