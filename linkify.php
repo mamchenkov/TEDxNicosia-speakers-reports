@@ -24,9 +24,17 @@ foreach ($data_files as $data_file) {
 
 uasort($words, 'compare_by_count');
 
-report_top($words, 10);
+report_top_words($words, 10);
 
-function report_top($words, $limit) {
+/**
+ * Report most common words
+ * 
+ * @param array $words Data
+ * @param integer $limit How many words to report (top 10)
+ * 
+ * @return void
+ */
+function report_top_words($words, $limit) {
 
 	print "Top $limit report\n";
 	print "---------------------------\n";
