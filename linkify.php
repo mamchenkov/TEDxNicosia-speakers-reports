@@ -22,8 +22,24 @@ foreach ($data_files as $data_file) {
 }
 
 uasort($words, 'compare_by_count');
-print_r($words);
 
+foreach ($words as $word => $files) {
+	$count = count($files);
+	if ($count > 1) {
+		printf("%20s : %2s :  %s\n", $word, $count, implode(',', $files));
+	}
+}
+
+/**
+ * Custom sorting routine
+ * 
+ * Compare using the count of array elements
+ * 
+ * @param array $a
+ * @param array $b
+ * 
+ * return integer
+ */
 function compare_by_count($a, $b) {
 	$count_a = count($a);
 	$count_b = count($b);
