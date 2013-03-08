@@ -126,6 +126,7 @@ function clean_word($word) {
 	$result = trim($word);
 	$result = strtolower($result);
 	$result = preg_replace("/\W+/", '', $result);
+	$result = preg_replace("/^\d+$/", '', $result);
 	return $result;
 }
 
