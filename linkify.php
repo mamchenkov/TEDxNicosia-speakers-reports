@@ -24,7 +24,7 @@ foreach ($data_files as $data_file) {
 
 uasort($words, 'compare_by_count');
 
-report_top_words($words, 10);
+report_top_words($words, 20);
 
 /**
  * Report most common words
