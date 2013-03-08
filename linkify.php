@@ -25,6 +25,7 @@ foreach ($data_files as $data_file) {
 uasort($words, 'compare_by_count');
 
 report_top_words($words, 20);
+report_ted($words);
 
 /**
  * Report most common words
@@ -44,6 +45,32 @@ function report_top_words($words, $limit) {
 		print "\tShared by: " . implode(', ', $files) . "\n\n";
 		if ($top++ >= $limit) {
 			break;
+		}
+	}
+}
+
+/**
+ * Report if TED abbriviations are commonly shared
+ * 
+ * @param array $words Data
+ * 
+ * @return void
+ */
+function report_ted($words) {
+
+	print "TED report\n";
+	print "----------\n";
+	$ted = array(
+		'technology', 
+		'entertainment', 
+		'design',
+	);
+	foreach ($ted as $word) {
+		if (!empty($words[$word])) {
+			print "$word is reprepsented by " . count($words[$word]) . ": " . implode(', ', $words[$word]) . "\n";
+		}
+		else {
+			print "$word is not represented\n";
 		}
 	}
 }
