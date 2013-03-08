@@ -1,4 +1,7 @@
 <?php
+/**
+ * @author Leonid Mamchenkov <leonid@mamchenkov.net>
+ */
 
 $data_dir = __DIR__ . DIRECTORY_SEPARATOR . 'data' . DIRECTORY_SEPARATOR . '2013';
 $exceptions = array_map('trim', file(__DIR__ . DIRECTORY_SEPARATOR . 'non_words.txt'));
