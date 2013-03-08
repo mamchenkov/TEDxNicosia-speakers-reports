@@ -5,13 +5,14 @@ $exceptions = array_map('trim', file(__DIR__ . DIRECTORY_SEPARATOR . 'non_words.
 
 $words = array();
 
-echo "Getting data from folder [$data_dir]\n";
+echo "Getting data files from folder [$data_dir]\n";
 $data_files = get_data_files($data_dir);
+echo "Total of " . count($data_files) . " files found\n\n";
 
 foreach ($data_files as $data_file) {
 	print "Processing file $data_file\n";
 	$file_words = get_file_words($data_file, $exceptions);
-	print "Found " . count($file_words) . " words.\n";
+	print "Found " . count($file_words) . " words.\n\n";
 
 	foreach ($file_words as $word) {
 		if (!isset($words[$word])) {
@@ -23,10 +24,19 @@ foreach ($data_files as $data_file) {
 
 uasort($words, 'compare_by_count');
 
-foreach ($words as $word => $files) {
-	$count = count($files);
-	if ($count > 1) {
-		printf("%20s : %2s :  %s\n", $word, $count, implode(',', $files));
+report_top($words, 10);
+
+function report_top($words, $limit) {
+
+	print "Top $limit report\n";
+	print "---------------------------\n";
+	$top = 1;
+	foreach ($words as $word => $files) {
+		print "$top. $word (shared by " . count($files) . ")\n";
+		print "\tShared by: " . implode(', ', $files) . "\n\n";
+		if ($top++ >= $limit) {
+			break;
+		}
 	}
 }
 
